@@ -1,0 +1,43 @@
+name: Engine
+version: ${project.version}
+main: pl.lightblock.engine.Main
+api-version: 1.16
+authors: [ BarthVisuals, nolemretaW ]
+description: The heart of the server
+
+depends: LuckPerms
+
+commands:
+  help:
+    aliases: [ 'pomoc' ]
+  gamemode:
+    aliases: [ 'gm' ]
+  fly:
+    aliases: [ 'latanie' ]
+  adminchat:
+    aliases: [ 'ac' ]
+  time:
+    aliases: [ 'pora', 'czas' ]
+  helpop:
+    aliases: [ 'zglos' ]
+  broadcast:
+    aliases: [ 'ogloszenie', 'bc' ]
+  heal:
+    aliases: [ 'ulecz' ]
+  chat:
+    aliases: [ 'czat', 'c' ]
+  sethome:
+  home:
+  god:
+    aliases: [ 'godmode' ]
+  vanish:
+    aliases: [ 'v' ]
+  LightBox:
+    aliases: [ 'box' ]
+  balance:
+    aliases: [ 'lightcoins', 'money' ]
+  msg:
+  blacklist:
+    aliases: [ 'bl' ]
+  setspawn:
+  spawn:

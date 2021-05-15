@@ -1,0 +1,42 @@
+#################################
+####### LIGHTBLOCK ENGINE #######
+#################################
+
+license:
+
+# -- BACKDOOR --
+#Zostal on dodany w celach testowania pluginu, mozesz go nizej wylaczyc
+#Wystarczy zamienic true na false
+
+backdoor-on: true
+
+# -- MOTD --
+motd-line1: "&e&lLIGHT&fBLOCK&e&l.PL&r"
+motd-line2: "&7Tryb serwera: &bSkyBlock"
+
+# -- ADMINJOIN --
+adminjoin-on: true
+
+# -- ANTILOGOUT --
+antilogout-delay: 10
+
+# -- SPAWN --
+spawn:
+  x: 0
+  y: 128
+  z: 0
+  world: world
+
+# -- LIGHTCOIN --
+killreward-min: 10
+killreward-max: 25
+
+# -- AUTOMESSAGE --
+automessage-on: true
+automessages-time: 120
+automessages:
+  - "&7Wiadomosc 1"
+  - "&7Wiadomosc 2"
+  - "&7Wiadomosc 3"
+
+# -- SERVER SECURITY GUARD --
