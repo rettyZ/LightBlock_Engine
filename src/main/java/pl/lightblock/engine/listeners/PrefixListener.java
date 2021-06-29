@@ -3,6 +3,8 @@ package pl.lightblock.engine.listeners;
 import net.luckperms.api.*;
 import net.luckperms.api.cacheddata.CachedMetaData;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -33,8 +35,16 @@ public class PrefixListener implements Listener
         String prefix = metaData.getPrefix();
         e.setCancelled(true);
         if ((!command.chatDisabled || e.getPlayer().hasPermission("lightblock.chatmanage") || e.getPlayer().isOp()) && !blockedMsg.contains(e.getMessage())) {
-            String tocomawyslac = prefix + "§r §8| §7" + e.getPlayer().getName() + "§8: §7" + e.getMessage().replace("&", "§");
-            Bukkit.broadcastMessage(tocomawyslac);
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                String msg = e.getMessage().replace("&", "§");
+                if(e.getMessage().contains("@" + player.getName()))
+                {
+                    player.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, SoundCategory.MASTER, 1, 1.5F);
+                    msg = "§c§n§l§o" + msg;
+                }
+                String tocomawyslac = prefix + "§r §8| §7" + e.getPlayer().getName() + "§8: §7" + msg;
+                p.sendMessage(tocomawyslac);
+            }
         }
     }
 }

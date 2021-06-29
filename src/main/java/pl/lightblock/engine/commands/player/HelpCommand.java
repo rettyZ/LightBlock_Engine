@@ -21,7 +21,7 @@ public class HelpCommand implements CommandExecutor {
                 p.sendMessage("§8★☆★☆★☆★☆★☆★☆ §eHELP §8★☆★☆★☆★☆★☆★☆");
                 p.sendMessage(" ");
                 p.sendMessage("§8» §eLIGHT§fHARD§e.PL");
-                p.sendMessage("§8» §7Tryb serwera: §eSkyBlock");
+                p.sendMessage("§8» §7Tryb serwera: §eEasyHC");
                 p.sendMessage("§8» §7Wersja serwera: §e1.8.8");
                 p.sendMessage(" ");
                 p.sendMessage("§8» §7Aby uzyskać inną pomoc:");
@@ -59,7 +59,7 @@ public class HelpCommand implements CommandExecutor {
                         p.sendMessage("§8★☆★☆★☆★☆★☆★☆ §eHELP §8★☆★☆★☆★☆★☆★☆");
                         p.sendMessage(" ");
                         p.sendMessage("§8» §eLIGHT§fHARD§e.PL");
-                        p.sendMessage("§8» §7Tryb serwera: §eSkyBlock");
+                        p.sendMessage("§8» §7Tryb serwera: §eEasyHC");
                         p.sendMessage("§8» §7Wersja serwera: §e1.8.8");
                         p.sendMessage(" ");
                         p.sendMessage("§8» §7Aby uzyskać inną pomoc:");

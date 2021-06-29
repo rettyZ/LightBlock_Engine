@@ -4,6 +4,9 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -51,7 +54,6 @@ public class JoinQuitListener implements Listener {
 
         s.createScoreboard(e.getPlayer());
         s.updateScoreboard();
-
 
         boolean adminjoin_status = plugin.getConfig().getBoolean("adminjoin-on");
 

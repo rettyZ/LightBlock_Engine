@@ -49,6 +49,7 @@ public class HelpOpCommand implements CommandExecutor {
                     }
                 });
             }
+            sender.sendMessage("§aWysłano wiadomość do administracji!");
         }
     return false;
     }

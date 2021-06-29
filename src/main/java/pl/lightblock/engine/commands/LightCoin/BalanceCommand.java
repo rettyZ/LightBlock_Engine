@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import pl.lightblock.engine.Main;
+import pl.lightblock.engine.utils.PluginUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class BalanceCommand implements CommandExecutor {
                     e.printStackTrace();
                 }
             }
-            p.sendMessage("§6§lStan konta: §7" + config.getString("money." + p.getName()) + " §eL§fC");
+            p.sendMessage("§6§lStan konta: §7" + config.getString("money." + p.getName()) + " " + PluginUtils.getMoneyCurrency());
         }
         return false;
     }

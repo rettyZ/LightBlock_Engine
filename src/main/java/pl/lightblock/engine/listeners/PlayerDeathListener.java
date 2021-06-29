@@ -11,8 +11,11 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import pl.lightblock.engine.Main;
+
+import java.util.HashMap;
 
 public class PlayerDeathListener implements Listener {
     Main plugin;
@@ -22,22 +25,11 @@ public class PlayerDeathListener implements Listener {
     }
     @EventHandler
     public void OnDeath(PlayerDeathEvent e) {
-        Player p = e.getEntity();
-        e.getEntity().setHealth(20);
-        e.getEntity().setGameMode(GameMode.SPECTATOR);
-        e.getEntity().sendTitle("§cNie żyjesz!", e.getDeathMessage(), 0, 20*5, 20);
-        Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-            @Override
-            public void run() {
-                double x = plugin.getConfig().getDouble("spawn.x");
-                double y = plugin.getConfig().getDouble("spawn.y");
-                double z = plugin.getConfig().getDouble("spawn.z");
-                World w = plugin.getServer().getWorld(plugin.getConfig().getString("spawn.world"));
-                Location loc = new Location(w, x, y, z);
-                p.spigot().respawn();
-                p.setGameMode(GameMode.SURVIVAL);
-                p.teleport(loc);
-            }
-        }, 20*5);
+        if(plugin.getConfig().getBoolean("showDeathScreen"))
+        {
+            String deathScreenTitle = "§cNIE ŻYJESZ!";
+            String deathScreenSubtitle = e.getDeathMessage();
+            e.getEntity().sendTitle(deathScreenTitle, deathScreenSubtitle, 0, 20*5, 20);
+        }
     }
 }

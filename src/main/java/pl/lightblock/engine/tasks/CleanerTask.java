@@ -20,9 +20,8 @@ public class CleanerTask {
                         && !(e instanceof Painting)
                         && !(e instanceof Snowball)
                         && !(e instanceof TNTPrimed)) {
-                    continue;
+                    e.remove();
                 }
-                e.remove();
                 }
             }
         }

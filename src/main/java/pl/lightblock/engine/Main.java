@@ -2,11 +2,14 @@ package pl.lightblock.engine;
 
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import pl.lightblock.engine.commands.LightCoin.BalanceCommand;
 import pl.lightblock.engine.commands.player.*;
 import pl.lightblock.engine.commands.admin.*;
+import pl.lightblock.engine.commands.player.menu.EffectsMenu;
+import pl.lightblock.engine.commands.player.menu.KitsMenu;
 import pl.lightblock.engine.commands.vip.*;
 import pl.lightblock.engine.commands.admin.chatmenu.*;
 import pl.lightblock.engine.listeners.*;
@@ -15,7 +18,11 @@ import pl.lightblock.engine.tasks.AutoMessageTask;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+
+
+import java.sql.*;
 
 import net.luckperms.api.LuckPerms;
 import pl.lightblock.engine.tasks.CleanerTask;
@@ -59,7 +66,6 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
         this.saveDefaultConfig();
         this.getConfig();
 
@@ -87,6 +93,12 @@ public class Main extends JavaPlugin {
 
         getCommand("time").setExecutor(new TimeCommand());
         getLogger().info("- time");
+
+        getCommand("effects").setExecutor(new EffectsCommand());
+        getLogger().info("- effects");
+
+        getCommand("kits").setExecutor(new KitsCommand());
+        getLogger().info("- effects");
 
         getCommand("helpop").setExecutor(new HelpOpCommand());
         getLogger().info("- helpop");
@@ -131,6 +143,9 @@ public class Main extends JavaPlugin {
         getCommand("blacklist").setExecutor(new BlacklistCommand(this));
         getLogger().info("- blacklist");
 
+        getCommand("version").setExecutor(new VersionCommand());
+        getLogger().info("- version");
+
         getLogger().info(" ");
         getLogger().info("Loading listeners:");
         getLogger().info(" ");
@@ -147,6 +162,16 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getLogger().info("- PlayerDeathListener");
 
+
+        Bukkit.getPluginManager().registerEvents(new TeleportListener(), this);
+        getLogger().info("- Teleport listener");
+
+        Bukkit.getPluginManager().registerEvents(new BedListener(), this);
+        getLogger().info(" - Bed listener ");
+
+        Bukkit.getPluginManager().registerEvents(new BlockCommands(this), this);
+        getLogger().info("- Command blocker");
+
         Bukkit.getPluginManager().registerEvents(new MoveListener(spawn), this);
         getLogger().info("- Spawn Delay");
 
@@ -155,6 +180,12 @@ public class Main extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new ChatItemsMenu(), this);
         getLogger().info("- Chat");
+
+        Bukkit.getPluginManager().registerEvents(new EffectsMenu(this), this);
+        getLogger().info("- Effects menu");
+
+        Bukkit.getPluginManager().registerEvents(new KitsMenu(this), this);
+        getLogger().info("- Kits menu");
 
         Bukkit.getPluginManager().registerEvents(new SSGListener(this), this);
         getLogger().info("- Server Security Guard");
@@ -186,6 +217,11 @@ public class Main extends JavaPlugin {
             AntiQuitListener.DoAntiLogoutCheck();
         }, 0L, 100L);
 
+        getLogger().info("- Kit delay");
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            KitsMenu.DoKitCheck();
+        }, 0L, 100L);
+
         if(getConfig().getBoolean("automessage-on")){
             new AutoMessageTask(this);
             AutoMessageTask.start();
@@ -213,4 +249,5 @@ public class Main extends JavaPlugin {
     public static Main getInst() {
         return Main.inst;
     }
+
 }

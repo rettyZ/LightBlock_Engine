@@ -28,7 +28,7 @@ public class Scoreboard {
         Score score2 = obj.getScore(" ");
         score2.setScore(2);
 
-        Score score3 = obj.getScore("§7Jesteś połączony z trybem: §eSkyBlock");
+        Score score3 = obj.getScore("§7Jesteś połączony z trybem: §eEasyHC");
         score3.setScore(3);
 
         Score score4 = obj.getScore("§7Twój nick: §e" + p.getDisplayName());
